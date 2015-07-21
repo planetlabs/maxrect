@@ -3,12 +3,15 @@ maxrect
 
 Find the maximally inscribed, axis-aligned rectangle for a given polygon.
 
+.. image:: https://pl-amit.s3.amazonaws.com/demo/maxrect/maximal-rectangle.png
+
+
 Installation
 ------------
 
 .. code-block:: bash
 
-    pip install git+git+https://github.com/planetlabs/maxrect.git
+    pip install git+https://github.com/planetlabs/maxrect.git
 
 
 CLI
