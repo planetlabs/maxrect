@@ -2,7 +2,6 @@
 import numpy as np
 import cvxpy
 from shapely.geometry import Polygon
-import shapely.wkt
 import geojson
 
 

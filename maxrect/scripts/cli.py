@@ -54,11 +54,7 @@ def maxrect(ctx, polygon, compare):
 @click.argument('input_geoms', required=True, nargs=-1)
 @click.pass_context
 def polyinter(ctx, input_geoms):
-    """
-    Get an approximately maximal area, axis-aligned rectangle
-    for a polygon represented by GeoJSON.
-    """
-
+    """Find an intersection polygon given multiple geometry inputs"""
     coords = []
     for ig in input_geoms:
         with open(ig, 'r') as src:
