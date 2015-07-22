@@ -29,6 +29,13 @@ def cli(ctx, polygon, compare):
 
     geojson = json.loads(data)
 
+    if geojson.get('type') == 'Feature':
+
+        geojson = {
+            'type': 'FeatureCollection',
+            'features': [geojson]
+        }
+
     features = geojson.get('features')
     n_features = len(features)
 
