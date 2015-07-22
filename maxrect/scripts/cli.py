@@ -5,7 +5,7 @@ import click
 from maxrect import get_maximal_rectangle, rect2poly
 
 
-@click.command('maxrect')
+@click.command('max-rect')
 @click.argument('polygon', default='-', required=False)
 @click.option('--compare', is_flag=True, help='Leaves the original polygon in the feature collection')
 @click.pass_context

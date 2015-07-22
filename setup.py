@@ -31,6 +31,6 @@ setup(name='maxrect',
       },
       entry_points="""
       [console_scripts]
-      maxrect=maxrect.scripts.cli:cli
+      max-rect=maxrect.scripts.cli:cli
       """
       )

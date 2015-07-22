@@ -21,16 +21,16 @@ CLI
 
 
     # For a given GeoJSON file
-    $ maxrect [path/to/file]
+    $ max-rect [path/to/file]
 
     # Piping
-    $ cat path/to/file.geojson | maxrect
+    $ cat path/to/file.geojson | max-rect
 
     # For a quick visualization
-    $ cat path/to/file.geojson | maxrect | geojsonio
+    $ cat path/to/file.geojson | max-rect | geojsonio
 
     # For comparison between the original polygon and the inscribed rectangle
-    $ cat path/to/file.geojson | maxrect --compare | geojsonio
+    $ cat path/to/file.geojson | max-rect --compare | geojsonio
 
 
 Python

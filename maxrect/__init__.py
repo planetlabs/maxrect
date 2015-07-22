@@ -1,7 +1,7 @@
 
 import numpy as np
 import cvxpy
-from shapely.geometry import Polygon
+from shapely.geometry import Polygon, asShape
 
 
 def rect2poly(ll, ur):
@@ -112,3 +112,17 @@ def get_maximal_rectangle(coordinates):
     top_right = np.array(tr.value).T * scale
 
     return list(bottom_left[0]), list(top_right[0])
+
+
+def get_intersection(polygon1, polygon2):
+    """
+    Get the intersection of two polygons.
+
+    :param polygon1:
+    :param polygon2:
+        Polygons represented by an array of coordinates.
+    """
+    p1 = asShape(polygon1)
+    p2 = asShape(polygon2)
+
+    return p1.intersection(p2)
