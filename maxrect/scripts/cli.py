@@ -74,7 +74,7 @@ def polyinter(ctx, input_geoms):
                 c = feature['geometry']['coordinates'][0]
                 coords.append(c)
 
-    inter_geojson = get_intersection(coords)
+    inter_geojson, _ = get_intersection(coords)
 
     geojson = {
         'type': 'FeatureCollection',
