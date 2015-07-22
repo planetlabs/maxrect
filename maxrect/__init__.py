@@ -23,7 +23,7 @@ def rect2poly(ll, ur):
 
 
 def get_intersection(coords):
-    """Given an input set of coordinates, find the intersection
+    """Given an input list of coordinates, find the intersection
     section of corner coordinates. Returns geojson of the
     interesection polygon.
     """
@@ -42,7 +42,12 @@ def get_intersection(coords):
     ipoly.exterior.coords.xy[1].append(first_y)
 
     inter_gj = geojson.Feature(geometry=ipoly, properties={})
-    return inter_gj
+    inter_coords = zip(
+        ipoly.exterior.coords.xy[0], ipoly.exterior.coords.xy[1])
+    from IPython import embed
+    # embed()
+
+    return inter_gj, inter_coords
 
 
 def two_pts_to_line(pt1, pt2):
