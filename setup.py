@@ -31,6 +31,7 @@ setup(name='maxrect',
       },
       entry_points="""
       [console_scripts]
-      max-rect=maxrect.scripts.cli:cli
+      max-rect=maxrect.scripts.cli:maxrect
+      poly-intersect=maxrect.scripts.cli:polyinter
       """
       )
