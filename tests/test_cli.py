@@ -19,4 +19,6 @@ def test_poly_intersect():
 
     runner = CliRunner()
     result = runner.invoke(polyinter, [srcpath1, srcpath2])
+
+    print result
     assert result.exit_code == 0
