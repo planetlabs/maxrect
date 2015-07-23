@@ -1,7 +1,7 @@
 
 import numpy as np
 import cvxpy
-from shapely.geometry import Polygon, asShape
+from shapely.geometry import Polygon
 
 
 def rect2poly(ll, ur):
@@ -19,6 +19,36 @@ def rect2poly(ll, ur):
         [x1, y0],
         [x0, y0]
     ]
+
+
+def get_intersection(coords):
+    """Given an input list of coordinates, find the intersection
+    section of corner coordinates. Returns geojson of the
+    interesection polygon.
+    """
+    ipoly = None
+    for coord in coords:
+        if ipoly is None:
+            ipoly = Polygon(coord)
+        else:
+            tmp = Polygon(coord)
+            ipoly = ipoly.intersection(tmp)
+
+    # close the polygon loop by adding the first coordinate again
+    first_x = ipoly.exterior.coords.xy[0][0]
+    first_y = ipoly.exterior.coords.xy[1][0]
+    ipoly.exterior.coords.xy[0].append(first_x)
+    ipoly.exterior.coords.xy[1].append(first_y)
+
+    inter_coords = zip(
+        ipoly.exterior.coords.xy[0], ipoly.exterior.coords.xy[1])
+
+    inter_gj = {"geometry":
+                {"coordinates": [inter_coords],
+                 "type": "Polygon"},
+                "properties": {}, "type": "Feature"}
+
+    return inter_gj, inter_coords
 
 
 def two_pts_to_line(pt1, pt2):
@@ -112,17 +142,3 @@ def get_maximal_rectangle(coordinates):
     top_right = np.array(tr.value).T * scale
 
     return list(bottom_left[0]), list(top_right[0])
-
-
-def get_intersection(polygon1, polygon2):
-    """
-    Get the intersection of two polygons.
-
-    :param polygon1:
-    :param polygon2:
-        Polygons represented by an array of coordinates.
-    """
-    p1 = asShape(polygon1)
-    p2 = asShape(polygon2)
-
-    return p1.intersection(p2)
