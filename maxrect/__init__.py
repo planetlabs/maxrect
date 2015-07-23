@@ -44,8 +44,6 @@ def get_intersection(coords):
     inter_gj = geojson.Feature(geometry=ipoly, properties={})
     inter_coords = zip(
         ipoly.exterior.coords.xy[0], ipoly.exterior.coords.xy[1])
-    from IPython import embed
-    # embed()
 
     return inter_gj, inter_coords
 
