@@ -2,7 +2,6 @@
 import numpy as np
 import cvxpy
 from shapely.geometry import Polygon
-import geojson
 
 
 def rect2poly(ll, ur):
@@ -41,9 +40,13 @@ def get_intersection(coords):
     ipoly.exterior.coords.xy[0].append(first_x)
     ipoly.exterior.coords.xy[1].append(first_y)
 
-    inter_gj = geojson.Feature(geometry=ipoly, properties={})
     inter_coords = zip(
         ipoly.exterior.coords.xy[0], ipoly.exterior.coords.xy[1])
+
+    inter_gj = {"geometry":
+                {"coordinates": [inter_coords],
+                 "type": "Polygon"},
+                "properties": {}, "type": "Feature"}
 
     return inter_gj, inter_coords
 
