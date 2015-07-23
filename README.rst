@@ -39,6 +39,12 @@ CLI
     # Find the largest inscribed rectangle that sits within multiple shapes
     poly-intersect path/to/file1.geojson path/to/file2.geojson | maxrect | geojsonio
 
+    # Find the intersection of two geojson files
+    poly-intersect path/to/file1.geojson path/to/file2.geojson | geojsonio
+
+    # Find the largest inscribed rectangle that sits within multiple shapes
+    poly-intersect path/to/file1.geojson path/to/file2.geojson | maxrect | geojsonio
+
 
 Python
 ------
