@@ -136,9 +136,9 @@ def get_maximal_rectangle(coordinates):
             constraints.append(tl[0] * A1[i] + tl[1] * A2[i] >= B[i])
 
     prob = cvxpy.Problem(obj, constraints)
-    prob.solve(solver=cvxpy.CVXOPT, verbose=False, max_iters=1000, reltol=1e-9)
+    prob.solve()
 
     bottom_left = np.array(bl.value).T * scale
     top_right = np.array(tr.value).T * scale
 
-    return list(bottom_left[0]), list(top_right[0])
+    return bottom_left, top_right
